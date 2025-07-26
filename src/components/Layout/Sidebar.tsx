@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, FileText, Settings, BarChart3, Users, Clock, Home } from 'lucide-react';
+import { Calendar, FileText, Settings, BarChart3, Users, Clock, Home, Wifi } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SidebarProps {
@@ -14,10 +14,11 @@ const Sidebar = ({ currentPage, onPageChange, userRole, userProfile }: SidebarPr
     { id: 'dashboard', label: 'Dashboard', icon: Home, roles: ['employee', 'manager', 'admin'] },
     { id: 'apply-leave', label: 'Apply Leave', icon: Calendar, roles: ['employee', 'manager'] },
     { id: 'my-leaves', label: 'My Leaves', icon: FileText, roles: ['employee', 'manager'] },
-    { id: 'team-leaves', label: 'Team Leaves', icon: Users, roles: ['manager', 'admin'] },
-    { id: 'reports', label: 'Reports', icon: BarChart3, roles: ['admin'] },
-    { id: 'settings', label: 'Settings', icon: Settings, roles: ['admin'] },
+    { id: 'work-from-home', label: 'Work From Home', icon: Wifi, roles: ['employee', 'manager'] },
     { id: 'comp-off', label: 'Comp Off', icon: Clock, roles: ['employee', 'manager'] },
+    { id: 'team-leaves', label: 'Team Leaves', icon: Users, roles: ['manager', 'admin'] },
+    { id: 'reports', label: 'Reports', icon: BarChart3, roles: ['manager', 'admin'] },
+    { id: 'settings', label: 'Settings', icon: Settings, roles: ['admin'] },
   ];
 
   const filteredItems = menuItems.filter(item => item.roles.includes(userRole));

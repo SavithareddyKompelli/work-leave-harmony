@@ -3,6 +3,11 @@ import Sidebar from '@/components/Layout/Sidebar';
 import Dashboard from '@/pages/Dashboard';
 import ApplyLeave from '@/pages/ApplyLeave';
 import MyLeaves from '@/pages/MyLeaves';
+import TeamLeaves from '@/pages/TeamLeaves';
+import CompOff from '@/pages/CompOff';
+import WorkFromHome from '@/pages/WorkFromHome';
+import Reports from '@/pages/Reports';
+import Settings from '@/pages/Settings';
 
 interface IndexProps {
   userProfile: any;
@@ -21,13 +26,15 @@ const Index = ({ userProfile }: IndexProps) => {
       case 'my-leaves':
         return <MyLeaves />;
       case 'team-leaves':
-        return <div className="p-8"><h1 className="text-2xl font-bold">Team Leaves (Coming Soon)</h1></div>;
-      case 'reports':
-        return <div className="p-8"><h1 className="text-2xl font-bold">Reports (Coming Soon)</h1></div>;
-      case 'settings':
-        return <div className="p-8"><h1 className="text-2xl font-bold">Settings (Coming Soon)</h1></div>;
+        return <TeamLeaves userRole={userRole} />;
       case 'comp-off':
-        return <div className="p-8"><h1 className="text-2xl font-bold">Comp Off (Coming Soon)</h1></div>;
+        return <CompOff />;
+      case 'work-from-home':
+        return <WorkFromHome />;
+      case 'reports':
+        return <Reports userRole={userRole} />;
+      case 'settings':
+        return <Settings userRole={userRole} />;
       default:
         return <Dashboard userRole={userRole} />;
     }
