@@ -6,9 +6,10 @@ interface SidebarProps {
   currentPage: string;
   onPageChange: (page: string) => void;
   userRole: 'employee' | 'manager' | 'admin';
+  userProfile: any;
 }
 
-const Sidebar = ({ currentPage, onPageChange, userRole }: SidebarProps) => {
+const Sidebar = ({ currentPage, onPageChange, userRole, userProfile }: SidebarProps) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: Home, roles: ['employee', 'manager', 'admin'] },
     { id: 'apply-leave', label: 'Apply Leave', icon: Calendar, roles: ['employee', 'manager'] },
@@ -67,10 +68,12 @@ const Sidebar = ({ currentPage, onPageChange, userRole }: SidebarProps) => {
       <div className="p-4 border-t border-border">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
-            <span className="text-sm font-semibold text-muted-foreground">JD</span>
+            <span className="text-sm font-semibold text-muted-foreground">
+              {userProfile?.full_name?.split(' ').map((n: string) => n[0]).join('').toUpperCase() || 'U'}
+            </span>
           </div>
           <div className="flex-1">
-            <p className="text-sm font-medium text-foreground">John Doe</p>
+            <p className="text-sm font-medium text-foreground">{userProfile?.full_name || 'User'}</p>
             <p className="text-xs text-muted-foreground capitalize">{userRole}</p>
           </div>
         </div>

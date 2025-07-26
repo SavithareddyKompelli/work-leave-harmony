@@ -4,9 +4,13 @@ import Dashboard from '@/pages/Dashboard';
 import ApplyLeave from '@/pages/ApplyLeave';
 import MyLeaves from '@/pages/MyLeaves';
 
-const Index = () => {
+interface IndexProps {
+  userProfile: any;
+}
+
+const Index = ({ userProfile }: IndexProps) => {
   const [currentPage, setCurrentPage] = useState('dashboard');
-  const [userRole] = useState<'employee' | 'manager' | 'admin'>('employee');
+  const userRole = userProfile?.role || 'employee';
 
   const renderPage = () => {
     switch (currentPage) {
@@ -35,6 +39,7 @@ const Index = () => {
         currentPage={currentPage} 
         onPageChange={setCurrentPage}
         userRole={userRole}
+        userProfile={userProfile}
       />
       <main className="flex-1 overflow-auto">
         <div className="p-8">
